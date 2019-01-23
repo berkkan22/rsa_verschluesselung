@@ -36,7 +36,7 @@ class _MyApp extends State<MyApp> {
 int primNumber() {
   // TODO: create a list of prime Numbers and than choose randomly a number out of the list
   List<int> primeNumberList = [];
-  for (int number = 100; number < 10000; number++) {
+  for (int number = 20; number < 150; number++) {
     int counter = 0;
     for (int teiler = 1; teiler < number + 1; teiler++) {
       if (number % teiler == 0) {
@@ -61,12 +61,11 @@ rsa_Verschuesselung() {
   int n = prime1 * prime2;
   int phiVonN = (prime1 - 1) * (prime2 - 1);
 
-  int e = teilerfremd(40);
+  int e = teilerfremd(phiVonN);
 
-  // print('Prime 1: ');
-  // print( prime1);
-  // print('Prime 2: ');
-  // print( prime2);
+  print('Prime 1: $prime1');
+  print('Prime 2: $prime2');
+  print('Phi(n): $phiVonN');
 }
 
 teilerfremd(int n) {
@@ -76,10 +75,10 @@ teilerfremd(int n) {
   List<int> teilerVonN = [];
 
   // alle geraden teiler von 40
-  for (var i = 1; i < n; i++) {
+  for (var i = 1; i <= n; i++) {
     if (n % i == 0) {
       if (i != 1) {
-        teilerVonN.add(i);
+        teilerVonN.add(i); // [2, 4, 5, 8, 10, 20, 40]
         // print(i);
       }
     }
@@ -87,34 +86,29 @@ teilerfremd(int n) {
 
   // teiler von allen zahlen bis 40
   List<int> teiler = [];
-  for (var d = 2; d <= n; d++) {
-    // print('for i anfang');
-    // print(i);
-    for (var k = 1; k <= d; k++) {
-      // print('for k anfang');
-      // print(k);
-      if (d != 1) {
-        if (d % k == 0) {
-          teiler.add(k);
-          // print(k);
-        }
+  var k;
+  for (var i = 2; i <= n; i++) {
+    for (var d = 2; d < i + 1; d++) {
+      if (i % d == 0) {
+        teiler.add(d);
       }
     }
 
-    // prüfen ob teiler gemeinsamen teiler mit teilerVonN haben
-    teiler.remove(1);
-    for (var p = 0; p < teiler.length; p++) {
-      // prüfen ob teiler gemeinsamen teiler mit teilerVonN haben
-      // print(teiler);
-      if (teilerVonN.indexOf(teiler.indexOf(p)) == -1) {
-        print(teiler);
-        // print(teiler.indexOf(teilerVonN.indexOf(p)));
-        // break;
+    for (var i = 0; i < teiler.length; i++) {
+      teiler.remove(1);
+      if (teilerVonN.indexOf(teiler[i]) != -1) {
+        teiler = [];
+        break;
+      } else {
+        // print(teiler);
+
+        // kann die teilerfremden in einer liste speicher anstant in k
+        // und könnte zufällig aus der liste wählen
+        k = teiler[i];
+        teiler = [];
       }
     }
-    // print(teiler);
-    teiler = [];
   }
-
-  print(teilerVonN);
+  print('Teilerfremder $k');
+  // print(teilerVonN);
 }
