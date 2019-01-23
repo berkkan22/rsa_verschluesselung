@@ -109,7 +109,6 @@ teilerfremd(int n) {
       if (teilerVonN.indexOf(teiler.indexOf(p)) == -1) {
         print(teiler);
         // print(teiler.indexOf(teilerVonN.indexOf(p)));
-        
         // break;
       }
     }
