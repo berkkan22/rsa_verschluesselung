@@ -104,17 +104,14 @@ teilerfremd(int n) {
     // prüfen ob teiler gemeinsamen teiler mit teilerVonN haben
     teiler.remove(1);
     for (var p = 0; p < teiler.length; p++) {
-      // for (var z = 0; z < teiler.length; z++) {
-      //   if (teilerVonN.indexOf(p) != teiler.indexOf(z)) {
-      //     // prüfen ob teiler gemeinsamen teiler mit teilerVonN haben
-      //     print(teiler);
-      //   }
-      // }
+      // prüfen ob teiler gemeinsamen teiler mit teilerVonN haben
+      // print(teiler);
       if (teilerVonN.indexOf(teiler.indexOf(p)) == -1) {
         print(teiler);
+        // print(teiler.indexOf(teilerVonN.indexOf(p)));
+        // break;
       }
     }
-
     // print(teiler);
     teiler = [];
   }
