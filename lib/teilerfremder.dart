@@ -40,5 +40,6 @@ teilerfremd(int n) {
     }
   }
   print('Teilerfremder $k');
+  return k;
   // print(teilerVonN);
 }
