@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'dart:math';
+
+import './prim_zahl.dart';
+import './teilerfremder.dart';
 
 main() => runApp(MyApp());
 
@@ -33,26 +35,6 @@ class _MyApp extends State<MyApp> {
   }
 }
 
-int primNumber() {
-  // TODO: create a list of prime Numbers and than choose randomly a number out of the list
-  List<int> primeNumberList = [];
-  for (int number = 20; number < 150; number++) {
-    int counter = 0;
-    for (int teiler = 1; teiler < number + 1; teiler++) {
-      if (number % teiler == 0) {
-        counter++;
-      }
-    }
-    if (counter == 2) {
-      primeNumberList.add(number);
-    }
-  }
-  // print(primeNumberList);
-  var randomgenerator = Random();
-  int random = randomgenerator.nextInt(primeNumberList.length);
-  return primeNumberList[random];
-}
-
 rsa_Verschuesselung() {
   int prime1 = primNumber();
   int prime2 = primNumber();
@@ -68,47 +50,5 @@ rsa_Verschuesselung() {
   print('Phi(n): $phiVonN');
 }
 
-teilerfremd(int n) {
-  // teilerfremden e bestimmen
-  // beispiel 7 ist teilerfremd zu 40
 
-  List<int> teilerVonN = [];
 
-  // alle geraden teiler von 40
-  for (var i = 1; i <= n; i++) {
-    if (n % i == 0) {
-      if (i != 1) {
-        teilerVonN.add(i); // [2, 4, 5, 8, 10, 20, 40]
-        // print(i);
-      }
-    }
-  }
-
-  // teiler von allen zahlen bis 40
-  List<int> teiler = [];
-  var k;
-  for (var i = 2; i <= n; i++) {
-    for (var d = 2; d < i + 1; d++) {
-      if (i % d == 0) {
-        teiler.add(d);
-      }
-    }
-
-    for (var i = 0; i < teiler.length; i++) {
-      teiler.remove(1);
-      if (teilerVonN.indexOf(teiler[i]) != -1) {
-        teiler = [];
-        break;
-      } else {
-        // print(teiler);
-
-        // kann die teilerfremden in einer liste speicher anstant in k
-        // und könnte zufällig aus der liste wählen
-        k = teiler[i];
-        teiler = [];
-      }
-    }
-  }
-  print('Teilerfremder $k');
-  // print(teilerVonN);
-}
