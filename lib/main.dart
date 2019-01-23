@@ -27,9 +27,15 @@ class _MyApp extends State<MyApp> {
           title: Text('RSA-Verschlüsselung'),
           // TODO: print public key, private key... (show in app)
         ),
-        body: Center(
-            // child: Text(a),
-            ),
+        body: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10.0),
+              child: Text(rsa_Verschuesselung(),
+                  style: TextStyle(fontSize: 50)),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -48,7 +54,18 @@ rsa_Verschuesselung() {
   print('Prime 1: $prime1');
   print('Prime 2: $prime2');
   print('Phi(n): $phiVonN');
+
+  String getdata = 'Prime 1: ' +
+      prime1.toString() +
+      '\n' +
+      'Prime 2: ' +
+      prime2.toString() +
+      '\n' +
+      'Phi(n): ' +
+      n.toString() +
+      '\n' +
+      'Teilerfremder: ' +
+      e.toString();
+
+  return getdata;
 }
-
-
-
