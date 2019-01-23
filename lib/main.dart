@@ -51,7 +51,7 @@ class _MyApp extends State<MyApp> {
               ),
               Container(
                   margin: EdgeInsets.all(10.0),
-                  child: Text(data, style: TextStyle(fontSize: 50)))
+                  child: Text(data, style: TextStyle(fontSize: 35)))
             ],
           )),
     );
