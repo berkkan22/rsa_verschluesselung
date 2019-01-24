@@ -34,27 +34,37 @@ class _MyApp extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('RSA-Verschlüsselung'),
-            // TODO: print public key, private key... (show in app)
-          ),
-          body: Column(
-            children: [
-              RaisedButton(
-                child: Text('CALC'),
-                onPressed: () {
-                  setState(() {
-                    data = rsa_Verschuesselung();
-                  });
-                },
-              ),
-              Container(
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text('RSA-Verschlüsselung'),
+              // TODO: print public key, private key... (show in app)
+            ),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
                   margin: EdgeInsets.all(10.0),
-                  child: Text(data, style: TextStyle(fontSize: 35)))
-            ],
-          )),
-    );
+                  child: RaisedButton(
+                    color: Colors.red,
+                    textColor: Colors.white,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    child: Text(
+                      'Calculate',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        data = rsa_Verschuesselung();
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Text(data, style: TextStyle(fontSize: 35))),
+              ],
+            )));
   }
 }
 
